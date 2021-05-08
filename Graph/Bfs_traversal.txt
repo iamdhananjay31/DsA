@@ -1,0 +1,31 @@
+// BFs traversal for  graph
+Void bfs(vector<int>adj[],vector<int>visited,int N)
+      {
+            For(int i=0; i<N; i++)
+           {
+                if(!visited[i])
+                   {
+                        queue<int>q;
+                         q.push(i);
+                         visited[i]=1;
+                         while(!q.empty())
+                         {
+                            int vertex = q.front();
+                             q.pop(); 
+                             cout<<vertex<<" ";
+                             for(auto it=adj[vertex].begin(); it!=adj[vertex].end(); it++)
+                             {
+                                 if(*it)
+                                 {
+                                     if(!visited[*it])
+                                     {
+                                          visited[*it]=1;
+                                          q.push_back(*it);
+                                      }
+                                 }   
+                                  
+                             }
+                         }               
+                    }
+            }
+    }

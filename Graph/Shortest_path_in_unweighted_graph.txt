@@ -1,0 +1,28 @@
+void shortest_distance(int V,int source, vector<int>adj[])
+{
+      vector<int>distance(V,INT_MAX);
+       distance[source]=0;
+      queue<int>q;
+      q.push(source);
+      while(!q.empty())
+      {
+        int parent=q.front();
+          q.pop();
+        for(auto it=adj[parent].begin(); it!=adj[parent].end(); it++)
+        {
+            if(it != adj[parent].end())
+            {
+                if(distance[*it] > 1+ distance[parent])
+                {
+                   distance[*it] = 1+distance[parent];
+                    q.push(*it);
+                }
+            }
+        }
+      
+    }
+    for(auto it = distance.begin(); it!=distance.end(); it++)
+    {
+          cout<<*it<<" ";
+    }
+}

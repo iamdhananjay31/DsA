@@ -1,0 +1,49 @@
+    bool topoSort(int V, vector<int> adj[]) 
+	{
+	     vector<int>indegree(V,0);
+	     vector<int>visited(V,0);
+	     queue<int>q;
+	     vector<int>result;
+	     for(int i=0; i<V; i++)
+	     {
+	         for(auto it=adj[i].begin(); it!=adj[i].end(); it++)
+	         {
+	             if(it!=adj[i].end())
+	             {
+	                 indegree[*it]++;
+	             }
+	         }
+	     }
+	     for(int i=0; i<indegree.size(); i++)
+	     {
+	         if(indegree[i]==0)
+	         {
+	             q.push(i);
+	         }
+	     }
+           int count=0;
+	   while(!q.empty())
+	   {
+	         int n = q.front();
+	         q.pop();
+                 count++;
+	         result.push_back(n);
+	         visited[n]=1;
+	         for(auto it=adj[n].begin(); it!=adj[n].end(); it++)
+	         {
+	              if(it != adj[n].end())
+	              {
+	                  indegree[*it]--;
+	                  if(indegree[*it] ==0 && !visited[*it])
+	                  {
+	                      q.push(*it);
+	                  }
+	              }
+	         }
+	   }
+            if(count==V)
+              return true;
+          
+	   return false;;
+	    
+	}
