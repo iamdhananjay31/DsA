@@ -1,0 +1,23 @@
+vector<int>inorder(Node* root)
+{
+     vector<int>in_order;
+     stack<Node*>st;
+     while(1)
+      {
+          while(root)
+          {
+             st.push(root);
+              root = root->left;
+
+          }
+          if(st.empty())
+               break; 
+           
+           in_order.push_back(st.top()->data);
+           root = st.top()->right;
+           st.pop();
+
+           
+      }
+   return in_order; 
+}

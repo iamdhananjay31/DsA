@@ -1,0 +1,18 @@
+ void inorder_trav(Node* root,vector<int>&in_o)
+   {
+         if(root)
+         {
+             inorder_trav(root->left,in_o);
+             in_o.push_back(root->data);
+             inorder_trav(root->right,in_o);
+             
+         }
+   
+       
+   }
+    vector<int> inOrder(Node* root)
+    {
+      vector<int>in_order;
+      inorder_trav(root,in_order);
+      return in_order;
+    }
